@@ -5,6 +5,7 @@ categories:
 - blogs
 tags:
 - blogs create
+description: 创建博客记录第一篇！！！
 ---
 
 ## 个人博客的初步搭建
@@ -29,7 +30,7 @@ tags:
 
 ----------
 
-## 三步完成博客搭建
+## 四步完成博客搭建
 >
 	
 >寻找自己满意的[主题模板](http://jekyllthemes.org/ "jekyll theme")(当然可以自己慢慢研究jekyll语法，博主暂时没有去研究）
@@ -119,4 +120,4 @@ github地址：[https://github.com/Simpleyyt/jekyll-theme-next](https://github.c
 	published: true # default true
 	---
 
-接下来直接写文章即可，
+接下来直接写文章即可。  
