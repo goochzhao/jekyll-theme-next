@@ -703,9 +703,9 @@ vendors:
 
 
 # Assets
-css: assets/css
-js: assets/js
-images: assets/images
+css: /studyplan/assets/css
+js: /studyplan/assets/js
+images: /studyplan/assets/images
 
 # Theme version
 version: 5.1.1
