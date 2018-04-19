@@ -1,5 +1,5 @@
 ---
-title: blogs create
+title: Blogs Create
 date: 2018-04-18 14：28
 categories:
 - blogs
