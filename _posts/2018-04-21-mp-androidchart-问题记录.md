@@ -18,6 +18,8 @@ description:  使用分组功能时对于自定义X轴标签一直对不齐问�
 - 如何自定义X轴标签
 - X轴标签和对应的 刻度对不齐问题
 
+![mark](http://p7fpzn7qh.bkt.clouddn.com/goochzhao/180421/gHE4aI8bb1.png?imageslim)
+
 ###  简单介绍框架
 
 MPAndroidChart是一款功能强大且易于使用的Android图表库。它运行在[API级别8](http://developer.android.com/guide/topics/manifest/uses-sdk-element.html#ApiLevels)以上。
