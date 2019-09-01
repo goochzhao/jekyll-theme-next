@@ -27,6 +27,11 @@ public static LayoutInflater from(Context context) {
 
 >  **context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)**
 
+```java
+ LayoutInflater LayoutInflater =
+                (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+```
+
 
 
 > **如果是在Activity中，可以通过Activity的getLayoutInflater方法获取，**
@@ -505,4 +510,4 @@ private void checkOnClickListener(View view, AttributeSet attrs) {
 
 
 
-其他详解参考：https://www.jianshu.com/p/6a193b61a833
+其他详解参考：[https://www.jianshu.com/p/6a193b61a833](https://www.jianshu.com/p/6a193b61a833)
