@@ -184,4 +184,33 @@ performLayout(lp, mWidth, mHeight);
 performDraw（）
 ```
 
-其实在该方法中会执行到getRunQueue().executeActions(mAttachInfo.mHandler);我们对这行代码不熟悉，但是我们平常使用mVIew.post(runnable)的时候会
+在performTraversals方法中执行了View的dispatchAttachedToWindow方法，会执行view的onAttachedToWindow方法，因为dispatchAttachedToWindow中也执行了mRunQueue.executeActions(info.mHandler);分发所有的pending runnables
+
+其实在该方法中会执行到mRunQueue.executeActions(info.mHandler);我们对这行代码不熟悉，但是我们平常使用mVIew.post(runnable)的时候会获取view的宽高，可是从源码中我们看到该方法是在上述三个方法之前执行的，那我们是如何获取到宽高的呢？其实原因就是我们的measure，layout，draw三大流程都是通过scheduleTraversals方法向下执行的，其中我们看到
+
+```java
+mChoreographer.postCallback(
+                Choreographer.CALLBACK_TRAVERSAL, mTraversalRunnable, null);
+```
+
+其实mChoreographer是通过内部的handler将mTraversalRunnable添加到Messagequeue中的，mTraversalRunnable中则执行了我们的三大测量布局绘制流程，接下来我们看一下mRunQueue.executeActions(info.mHandler);
+
+```java
+ public void executeActions(Handler handler) {
+        synchronized (this) {
+            final HandlerAction[] actions = mActions;
+            for (int i = 0, count = mCount; i < count; i++) {
+                final HandlerAction handlerAction = actions[i];
+                handler.postDelayed(handlerAction.action, handlerAction.delay);
+            }
+...
+        }
+    }
+```
+
+我们看到他是将待执行的handlerAction添加到主线程的Messagequeue中，这个消息时在绘制流程消息的后边，所以会先执行测量布局绘制流程，然后再执行view.post()的行为，所以在这里是可以拿到测量后的宽高，
+
+在这里有需要注意的点：
+
+view.post在api23一下和api24+有所区别，原因就是在于内部使用的HandlerActionQueue不同，在api23一下使用的是ViewRootImpl.getRunQueue,而在api24即以上使用的是view内部new的HandlerActionQueue，但是ViewRootImpl.getRunQueue会在每一帧刷新的时候执行executeActions，view内部的HandlerActionQueue只会在dispatchAttachedToWindow的时候执行executeActions，所以就会存在在api24及以上的版本如果view没有attach是不会执行对应的runnable的，
+

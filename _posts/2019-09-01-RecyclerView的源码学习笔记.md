@@ -12,6 +12,12 @@ description: RecyclerView的源码学习笔记
 
 参考文章：[https://mp.weixin.qq.com/s/S31bHWLtUeR4-sjI-ULoUQ](https://mp.weixin.qq.com/s/S31bHWLtUeR4-sjI-ULoUQ)
 
+[https://mp.weixin.qq.com/s/FiQEa0M93eSi1i4PzW_6Nw](https://mp.weixin.qq.com/s/FiQEa0M93eSi1i4PzW_6Nw)
+
+[https://mp.weixin.qq.com/s/AUEDB--AHy4kLUHnMzjFYg](https://mp.weixin.qq.com/s/AUEDB--AHy4kLUHnMzjFYg)
+
+
+
 ## RecyclerView的回收机制
 
 ```java
